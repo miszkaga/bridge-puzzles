@@ -1,0 +1,70 @@
+===========================================================================
+ SZABLON ZAGADEK JEDNOKOLOROWYCH
+===========================================================================
+ Wszystko powyżej pierwszej linii z numerem zadania parser pomija, więc te
+ instrukcje możesz zostawić w pliku. Skasuj natomiast oba przykłady, zanim
+ zaimportujesz własne zadania — inaczej wejdą do bazy razem z nimi.
+
+ ZASADY
+   - Zadanie zaczyna się linią z samym numerem i kropką:  1.
+   - Kolejność linii wewnątrz zadania jest dowolna
+   - Linia nie pasująca do żadnego pola trafia do opisu dla gracza
+   - Ręce muszą sumować się do 13 kart
+
+ KARTY        A=As  K=Król  D=Dama  W=Walet  10..2=blotki  x=dowolna blotka
+ KOLOR        ♠ ♥ ♦ ♣  albo  S H D C  albo  pik / kier / karo / trefl
+              Przy kontrakcie w kolor rozpatrywany kolor JEST atutowym
+
+ POLA         wymagane : N: E: S: W: / Kontrakt: / Rozgrywający:
+                         Lewy do wzięcia na obronie: / Dobre:
+              zalecane : Kolor: / Broniący: / Wyszło:
+              opcjonalne: Złe: / Trudność:
+
+ DOBRE        "Dobre: 10"      jedna karta
+              "Dobre: W, 10"   kilka równoważnych
+              "Dobre: blotka"  każda blotka broniącego
+
+ WYSZŁO       Pary pozycja:karta w kolejności zagrania. Przy stole kolejność
+              biegnie zgodnie z ruchem wskazówek zegara: N, E, S, W.
+
+ BRONIĄCY     Domyślnie DRUGA wymieniona pozycja. Jeśli wypisujesz ręce
+              w innej kolejności, dodaj jawne "Broniący: E".
+
+ IMPORT       node scripts/import-puzzles.js plik.txt            (na sucho)
+              node scripts/import-puzzles.js plik.txt --commit   (zapis)
+===========================================================================
+
+
+1.
+N: AD9xxx
+E: W10x
+S: Kx
+W: xx
+
+Kolor: ♦
+Kontrakt: 3NT
+Rozgrywający: S
+Broniący: E
+Lewy do wzięcia na obronie: 1
+Wyszło: S:K, W:x, N:x
+Dobre: W, 10
+Złe: x — Zrzucając blotkę pozwalasz rozgrywającemu wyimpasować drugi honor.
+Trudność: medium
+
+Zrzucając honor (Waleta lub 10) dajemy rozgrywającemu szansę zagrania na impas drugiego honoru.
+
+
+2.
+N: DW9xx
+E: Kx
+S: Axx
+W: 10xx
+
+Kolor: ♠
+Kontrakt: 4♠
+Rozgrywający: S
+Lewy do wzięcia na obronie: 1
+Wyszło: N:D
+Dobre: blotka
+
+Należy przepuścić, zmuszając rozgrywającego do zgadywania, czy w rozdaniu jest drugi Król, czy druga 10-ka u naszego partnera.
